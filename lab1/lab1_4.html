@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Изображения и их атрибуты</title>
+</head>
+
+<body>
+	<section class="center">
+		<h1>Изображения</h1>
+
+		<h2>Элемент <code>img</code></h2>
+		<p>Элемент <code>img</code> внедряет изображение в текущий документ в месте определения элемента. Элемент
+			<code>img</code> не имеет содержимого — он замещается на ходу изображением, указанным в атрибуте
+			<code>src</code>.
+		</p>
+
+		<figure>
+			<img src="../images/aquaria.jpg" alt="Пример базового изображения">
+			<figcaption>Рис. 1 - Простейший пример использования элемента img с атрибутом src</figcaption>
+		</figure>
+
+		<h2>Альтернативный текст</h2>
+		<p>Атрибут <code>alt</code> предоставляет краткое описание изображения. Он содержит альтернативный текст,
+			который отображается, если изображение не может быть выведено. Пользовательские агенты должны отображать
+			альтернативный текст, если они не поддерживают изображения, или сконфигурированы так, чтобы не показывать
+			изображения (отключен показ изображений).</p>
+
+		<figure>
+			<img src="../images/несуществующий_файл.jpg"
+				alt="Это альтернативный текст, который отображается, когда изображение недоступно">
+			<figcaption>Рис. 2 - Демонстрация атрибута alt (изображение не загрузилось)</figcaption>
+		</figure>
+
+		<h2>Размеры изображения</h2>
+		<p>Атрибуты <code>width</code> и <code>height</code> задают размеры области изображения. Если оба атрибута не
+			заданы, размер изображения будет определен после его полной загрузки, после чего размеры области будут
+			изменены для размещения содержания картинки.
+			Если задан только один из атрибутов, второй размер будет высчитан в соответствие с пропорциями изображения и
+			заданным атрибутом.
+			При указании обоих атрибутов ПА «впишет» изображение в область с указанными размерами.</p>
+
+		<figure>
+			<img src="../images/globus.gif" alt="Изображение без указания размеров">
+			<figcaption>Рис. 3 - Изображение без атрибутов width и height (оригинальный размер)</figcaption>
+		</figure>
+
+		<figure>
+			<img src="../images/globus.gif" width="200" alt="Изображение только с width">
+			<figcaption>Рис. 4 - Атрибут width="200" (высота подбирается пропорционально)</figcaption>
+		</figure>
+
+		<figure>
+			<img src="../images/globus.gif" width="300" height="150" alt="Изображение с width и height">
+			<figcaption>Рис. 5 - Атрибуты width="300" и height="150" (изображение может исказиться)</figcaption>
+		</figure>
+
+		<p>Для добавления гибких (responsive) изображений (таких, которые отображаются хорошо на устройствах с сильно
+			отличающимися размерами экрана, разрешением, и другими характеристиками) используют атрибуты
+			<code>sizes</code> и <code>srcset</code>.
+			Атрибут <code>sizes</code> задаёт размеры изображения для разных макетов страницы.
+			Атрибут <code>srcset</code> задаёт путь к графическим файлам с учётом размера изображения и устройств.
+		</p>
+
+		<figure>
+			<img src="../images/globus.gif"
+				srcset="../images/globus.gif 480w, ../images/globus.gif 800w, ../images/globus.gif 1200w"
+				sizes="(max-width: 600px) 480px, (max-width: 1200px) 800px, 1200px" alt="Адаптивное изображение">
+			<figcaption>Рис. 6 - Адаптивное изображение с атрибутами srcset и sizes</figcaption>
+		</figure>
+
+		<h2>Подпись к изображению</h2>
+		<p>Для группирования любых элементов, например, изображений и подписей к ним используется элемент
+			<code>figure</code>.
+			Он не должен быть связан непосредственно с основным содержимым документа и при его перемещении в другое
+			место смысл текста не должен меняться.
+			Обычно применяется для иллюстраций, фрагментов кода, схем, графиков, диаграмм и др.
+			Элемент <code>figcaption</code> содержит описание для элемента <code>figure</code>. Он должен быть первым
+			или последним элементом в группе.
+		</p>
+
+		<figure>
+			<img src="../images/html5-logo.png" alt="Изображение с подписью">
+			<figcaption>Рис. 7 - Пример использования элементов figure и figcaption для создания подписи к изображению
+			</figcaption>
+		</figure>
+
+		<figure>
+			<figcaption>Рис. 8 - Подпись может быть и перед изображением</figcaption>
+			<img src="../images/html5-logo.png" alt="Изображение с подписью в начале">
+		</figure>
+
+		<h2>Дополнительные атрибуты изображений</h2>
+
+		<h3>Атрибут title</h3>
+		<figure>
+			<img src="../images/muscle.png" title="Это всплывающая подсказка" alt="Изображение с подсказкой">
+			<figcaption>Рис. 9 - Атрибут title (наведите курсор, чтобы увидеть подсказку)</figcaption>
+		</figure>
+
+		<h3>Атрибут align</h3>
+		<p><img src="../images/mushroom.jpg" width="1000" alt="Выравнивание слева"> Изображение с
+			align="left". Текст обтекает изображение справа. Атрибут align может принимать значения left, right, top,
+			middle, bottom.</p>
+		<p style="clear: both;"><img src="../images/mushroom_landscape.jpg" width="1000" alt="Выравнивание справа">
+			Изображение с align="right". Текст обтекает изображение слева.</p>
+		<p style="clear: both;"><img src="../images/mushroom_portrait.jpg" width="100" alt="Выравнивание по верху">
+			Изображение с align="top". Текст выравнивается по верхнему краю
+			изображения.</p>
+		<p><img src="../images/mushroom_retina.jpg" width="100" alt="Выравнивание по середине">
+			Изображение с align="middle". Текст выравнивается по центру изображения.</p>
+		<p><img src="../images/mushroom_landscape.jpg" width="100" alt="Выравнивание по низу">
+			Изображение с align="bottom". Текст выравнивается по нижнему краю изображения.</p>
+		<figure>
+			<figcaption>Рис. 10 - Демонстрация различных значений атрибута align</figcaption>
+		</figure>
+
+		<h3>Атрибут border</h3>
+		<figure>
+			<img src="../images/mushroom_landscape.jpg" alt="Рамка 0">
+			<figcaption>Рис. 11 - border="0" (без рамки)</figcaption>
+		</figure>
+		<figure>
+			<img src="../images/mushroom_landscape.jpg" alt="Рамка 5">
+			<figcaption>Рис. 12 - border="5" (рамка 5 пикселей)</figcaption>
+		</figure>
+
+		<h3>Атрибуты vspace и hspace</h3>
+		<p><img src="../images/mushroom_portrait.jpg" width="100" alt="Без отступов"> Без отступов. Текст
+			прилегает вплотную к изображению.</p>
+		<p><img src="../images/mushroom_portrait.jpg" width="100" alt="С отступами"> С отступами. Вокруг изображения
+			добавлен отступ
+			20 пикселей.</p>
+		<p></p>
+		<figure>
+			<figcaption>Рис. 13 - Демонстрация атрибутов vspace и hspace</figcaption>
+		</figure>
+
+		<h2>Элемент picture</h2>
+		<p>HTML-элемент <code>picture</code> служит контейнером для одного или более элементов <code>source</code> и
+			одного элемента <code>img</code> для обеспечения оптимальной версии изображения для различных размеров
+			экрана. Браузер рассмотрит каждый из дочерних элементов <code>source</code> и выберет один, соответствующий
+			лучшему совпадению; если совпадений среди элементов <code>source</code> найдено не будет, то будет выбран
+			файл, указанный атрибутом <code>src</code> элемента <code>img</code>. Затем выбранное изображение
+			отображается в пространстве, занятом элементом <code>img</code>.</p>
+
+		<picture>
+			<source media="(min-width: 1024px)" srcset="../images/mushroom_portrait.jpg">
+			<source media="(min-width: 640px)" srcset="../images/globus.gif">
+			<source media="(min-width: 320px)" srcset="../images/redcat.jpg">
+			<img src="../images/slon.png" alt="Адаптивное изображение с picture">
+		</picture>
+		<figure>
+			<figcaption>Рис. 14 - Элемент picture с несколькими source для разных разрешений экрана</figcaption>
+		</figure>
+
+		<hr>
+		<p><a href="../index.html">Вернуться на главную</a> | <a href="lab1_1.html">Лабораторная 1.1</a> | <a
+				href="lab1_2.html">Лабораторная 1.2</a> | <a href="lab1_3.html">Лабораторная 1.3</a></p>
+	</section>
+</body>
+
+</html>
